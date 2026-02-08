@@ -5,6 +5,3 @@ edition = "2024"
 
 [dependencies]
 mpd = "0.1.0"
-
-[patch.crates-io]
-mpd = { path = "../mpd-0.1.0" }
