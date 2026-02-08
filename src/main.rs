@@ -8,10 +8,10 @@ fn main() {
 
 	let mut query = Query::new();
 	let query = query.and(Term::Any, "");
-	let (mut index, chunk_size) = (0, 100);
+	let mut index = 0;
 	let mut files: Vec<String> = vec![];
 	loop {
-		let search = connection.search(query, Window::from((index, index+chunk_size)));
+		let search = connection.search(query, Window::from((index, index+1)));
 		println!("{:?}", search);
 
 		match search {
@@ -23,8 +23,6 @@ fn main() {
 			}
 		}
 
-		println!("Read {} items..., up to {}", chunk_size, index);
-
-		index += chunk_size;
+		index += 1;
 	}
 }
